@@ -1,0 +1,45 @@
+.contact {
+    display: flex;
+    width: 320px;
+    height: 70px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+    border: 3px solid #0c0c0d66;
+}
+
+.textName {
+    font-weight: 600;
+    font-size: 18px;
+    margin-bottom: 6px;
+    text-transform: capitalize;
+}
+
+.textNumber {
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.delete {
+    font-weight: 400;
+    font-size: 14px;
+    background-color: #646fe6;
+    color: #ffffff;
+    letter-spacing: 0.04em;
+    line-height: 1.5;
+    cursor: pointer;
+    display: block;
+    min-width: 69px;
+    height: 30px;
+    border: none;
+    border-radius: 3px;
+    box-shadow: 0px 4px 4px 0px #00000026;
+}
+
+.delete:hover {
+    background-color: #1223e2;
+}
+
+.icon {
+    margin-right: 9px;
+}
