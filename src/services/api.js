@@ -1,8 +1,14 @@
 import axios from "axios";
 
 const instance = axios.create({
-  baseURL: "https://66213b503bf790e070b247c0.mockapi.io",
+  baseURL: "https://connections-api.herokuapp.com",
 });
+// export const setToken = (token) => {
+//   instance.defaults.headers.common.Authorization = `Bearer ${token}`;
+// };
+// export const resetToken = () => {
+//   instance.defaults.headers.common.Authorization = null;
+// };
 
 export const fetchContacts = async () => {
   const { data } = await instance.get("/contacts");

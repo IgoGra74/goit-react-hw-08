@@ -1,7 +1,8 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-// import { nanoid } from "nanoid";
 import css from "./RegistrationPage.module.css";
+import { useDispatch } from "react-redux";
+import { register } from "../../redux/auth/operations";
 
 const initialValues = {
   name: "",
@@ -19,17 +20,16 @@ const registerUserSchema = Yup.object().shape({
     .email("You must enter valid email address!"),
   password: Yup.string()
     .required("Password is required")
-    .min(3, "Name must be at least 3 characters")
+    .min(8, "Name must be at least 8 characters")
     .max(50, "Name must not exceed 50 characters"),
 });
 const RegistrationPage = () => {
+  const dispatch = useDispatch();
+
   const handleSubmit = (values, actions) => {
-    // const newContact = {
-    //   // id: nanoid(),
-    //   name: values.name,
-    //   number: values.number,
-    // };
-    // onAddContact(newContact);
+    console.log(values);
+
+    dispatch(register(values));
     actions.resetForm();
   };
   return (
@@ -40,19 +40,6 @@ const RegistrationPage = () => {
         onSubmit={handleSubmit}
       >
         <Form>
-          <div className={css.group}>
-            <label htmlFor="name" className={css.label}>
-              Name
-            </label>
-            <Field
-              className={css.field}
-              type="text"
-              id="name"
-              name="name"
-              placeholder="Ihor Horoshko"
-            />
-            <ErrorMessage name="name" component="div" />
-          </div>
           <div className={css.group}>
             <label htmlFor="email" className={css.label}>
               Email
@@ -65,6 +52,19 @@ const RegistrationPage = () => {
               placeholder="ihor@i.ua"
             />
             <ErrorMessage name="email" component="div" />
+          </div>{" "}
+          <div className={css.group}>
+            <label htmlFor="name" className={css.label}>
+              Name
+            </label>
+            <Field
+              className={css.field}
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Ihor Horoshko"
+            />
+            <ErrorMessage name="name" component="div" />
           </div>
           <div className={css.group}>
             <label htmlFor="password" className={css.label}>

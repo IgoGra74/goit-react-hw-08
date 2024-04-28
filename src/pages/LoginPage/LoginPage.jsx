@@ -1,6 +1,8 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import css from "./LoginPage.module.css";
+import { useDispatch } from "react-redux";
+import { login } from "../../redux/auth/operations";
 
 const initialValues = {
   email: "",
@@ -18,13 +20,9 @@ const loginUserSchema = Yup.object().shape({
 });
 
 const LoginPage = () => {
+  const dispatch = useDispatch();
   const handleSubmit = (values, actions) => {
-    // const newContact = {
-    //   // id: nanoid(),
-    //   name: values.name,
-    //   number: values.number,
-    // };
-    // onAddContact(newContact);
+    dispatch(login(values));
     actions.resetForm();
   };
   return (

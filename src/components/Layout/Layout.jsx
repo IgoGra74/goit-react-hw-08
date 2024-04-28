@@ -4,6 +4,8 @@
 import AppBar from "../AppBar/AppBar";
 import { Suspense } from "react";
 import Loader from "../Loader/Loader";
+// import { useSelector } from "react-redux";
+// import { selectIsSignedIn } from "../../redux/auth/selectors";
 // const buildLinkClass = ({ isActive }) => {
 //   return clsx(css.link, isActive && css.active);
 // };

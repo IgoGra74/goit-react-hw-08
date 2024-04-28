@@ -2,7 +2,7 @@
 // import ContactList from "./components/ContactList/ContactList";
 // import SearchBox from "./components/SearchBox/SearchBox";
 // import css from "./App.module.css";
-import { lazy } from "react";
+import { Suspense, lazy, useEffect } from "react";
 // import { useDispatch } from "react-redux";
 // import { apiGetContacts } from "./redux/contactsOps";
 
@@ -11,6 +11,11 @@ import { lazy } from "react";
 // import Loader from "./components/Loader/Loader";
 import { Route, Routes } from "react-router-dom";
 import Layout from "./components/Layout/Layout";
+import { useDispatch } from "react-redux";
+import { refreshUser } from "./redux/auth/operations";
+import Loader from "./components/Loader/Loader";
+import RestrictedRoute from "./components/RestrictedRoute/RestrictedRoute";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 
 const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
 const NotFoundPage = lazy(() => import("./pages/NotFoundPage/NotFoundPage"));
@@ -26,35 +31,57 @@ const ContactsPage = lazy(() => import("./pages/ContactsPage/ContactsPage"));
 // import NotFoundPage from "./pages/NotFoundPage";
 
 function App() {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(apiGetContacts());
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
 
   return (
     <div>
-      {/* <Navigation /> */}
       <Layout>
-        {/* <Suspense fallback={<Loader />}> */}
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/register" element={<RegistrationPage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/contacts" element={<ContactsPage />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
-        {/* </Suspense> */}
+        <Suspense fallback={<Loader />}>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route
+              path="/register"
+              element={
+                <RestrictedRoute>
+                  <RegistrationPage />
+                </RestrictedRoute>
+              }
+            />
+            <Route
+              path="/login"
+              element={
+                <RestrictedRoute>
+                  <LoginPage />
+                </RestrictedRoute>
+              }
+            />
+            <Route
+              path="/contacts"
+              element={
+                <PrivateRoute>
+                  <ContactsPage />
+                </PrivateRoute>
+              }
+            />
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </Suspense>
       </Layout>
-
-      {/* <div>
-        <h1 className={css.title}>Phonebook</h1>
-        <ContactForm />
-        <SearchBox />
-        <ContactList />
-      </div> */}
     </div>
   );
 }
 
 export default App;
+
+{
+  /* <div>
+  <h1 className={css.title}>Phonebook</h1>
+  <ContactForm />
+  <SearchBox />
+  <ContactList />
+</div>; */
+}
