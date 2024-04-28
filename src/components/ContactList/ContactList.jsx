@@ -1,15 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
 import Contact from "../Contact/Contact";
 import css from "./ContactList.module.css";
-import {
-  selectError,
-  selectIsLoading,
-  selectVisibleContacts,
-} from "../../redux/contactsSlice";
+import { selectError, selectIsLoading } from "../../redux/contacts/selectors";
 import Loader from "../Loader/Loader";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import { useEffect } from "react";
-import { apiGetContacts } from "../../redux/contactsOps";
+import { apiGetContacts } from "../../redux/contacts/operations";
+import { selectVisibleContacts } from "../../redux/filters/selectors";
 
 const ContactList = () => {
   const dispatch = useDispatch();

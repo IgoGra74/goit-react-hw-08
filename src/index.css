@@ -10,6 +10,8 @@ body {
   min-width: 320px;
   min-height: 100vh;
   font-family: "Roboto", sans-serif;
+  font-style: normal;
+  background-color: rgb(234, 248, 243);
 }
 
 h1,
