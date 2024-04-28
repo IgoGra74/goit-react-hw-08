@@ -1,7 +1,5 @@
 import { createSlice, isAnyOf } from "@reduxjs/toolkit";
 import { login, logout, refreshUser, register } from "./operations";
-// import { apiAddContact, apiDeleteContact, apiGetContacts } from "./contactsOps";
-// import { selectNameFilter } from "./filtersSlice";
 
 const INITIAL_STATE = {
   user: {
@@ -68,20 +66,5 @@ const authSlice = createSlice({
 });
 
 const authReducer = authSlice.reducer;
-
-// export const selectContacts = (state) => state.contacts.items;
-// export const selectIsLoading = (state) => state.contacts.loading;
-// export const selectError = (state) => state.contacts.error;
-
-// export const selectVisibleContacts = createSelector(
-//   [selectContacts, selectNameFilter],
-//   (contacts, name) => {
-//     return contacts
-//       ? contacts.filter((contact) =>
-//           contact.name.toLowerCase().includes(name.toLowerCase())
-//         )
-//       : [];
-//   }
-// );
 
 export default authReducer;

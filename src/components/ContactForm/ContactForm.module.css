@@ -30,14 +30,11 @@ form {
     height: 40px;
     background-color: white;
     box-sizing: border-box;
-
-
 }
 
 .field:hover {
     border-color: #2a3bf3;
 }
-
 
 .addContact {
     font-weight: 500;
