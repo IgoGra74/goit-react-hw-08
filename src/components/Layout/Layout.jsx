@@ -1,17 +1,19 @@
-import { NavLink } from "react-router-dom";
-import clsx from "clsx";
-import css from "./Layout.module.css";
+// import { NavLink } from "react-router-dom";
+// import clsx from "clsx";
+// import css from "./Layout.module.css";
 import AppBar from "../AppBar/AppBar";
-
-const buildLinkClass = ({ isActive }) => {
-  return clsx(css.link, isActive && css.active);
-};
+import { Suspense } from "react";
+import Loader from "../Loader/Loader";
+// const buildLinkClass = ({ isActive }) => {
+//   return clsx(css.link, isActive && css.active);
+// };
 
 const Layout = ({ children }) => {
   return (
     <div>
       <AppBar />
-      <header className={css.header}>
+      <Suspense fallback={<Loader />}>{children}</Suspense>
+      {/* <header className={css.header}>
         <nav className={css.nav}>
           <NavLink to="/" className={buildLinkClass}>
             Home
@@ -27,7 +29,7 @@ const Layout = ({ children }) => {
           </NavLink>
         </nav>
       </header>
-      <main>{children}</main>
+      <main>{children}</main> */}
     </div>
   );
 };
