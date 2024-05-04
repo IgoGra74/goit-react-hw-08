@@ -5,12 +5,19 @@ const INITIAL_STATE = {
   items: [],
   loading: false,
   error: null,
+  currentContact: null,
 };
 
 const contactsSlice = createSlice({
   name: "contacts",
 
   initialState: INITIAL_STATE,
+  reducers: {
+    setCurrentContact(state, action) {
+      state.currentContact = action.payload;
+    },
+  },
+
   extraReducers: (builder) =>
     builder
       .addCase(apiGetContacts.fulfilled, (state, action) => {
@@ -52,5 +59,7 @@ const contactsSlice = createSlice({
       ),
 });
 const contactsReducer = contactsSlice.reducer;
+
+export const { setCurrentContact } = contactsSlice.actions;
 
 export default contactsReducer;

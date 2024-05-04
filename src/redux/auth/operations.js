@@ -57,7 +57,6 @@ export const refreshUser = createAsyncThunk(
     try {
       setToken(token);
       const { data } = await instance.get("/users/current");
-      console.log("REFRESH data: ", data);
 
       return data;
     } catch (e) {

@@ -6,15 +6,23 @@
     align-items: center;
     padding: 8px;
     border: 3px solid #0c0c0d66;
-    background-color: white;
+    background-color: rgb(212, 250, 212);
+
 }
 
 .textName {
     font-weight: 600;
-    font-size: 18px;
+    font-size: 20px;
     margin-bottom: 6px;
     text-transform: capitalize;
 }
+
+.contact:hover {
+    transform: scale(1.05);
+    transition: transform 450ms cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
 
 .textNumber {
     font-weight: 600;
@@ -24,7 +32,7 @@
 .delete {
     font-weight: 400;
     font-size: 14px;
-    background-color: #646fe6;
+    background-color: #4f9240;
     color: #ffffff;
     letter-spacing: 0.04em;
     line-height: 1.5;
@@ -38,7 +46,7 @@
 }
 
 .delete:hover {
-    background-color: #1223e2;
+    background-color: #2c5524;
 }
 
 .icon {

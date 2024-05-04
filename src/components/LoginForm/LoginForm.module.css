@@ -1,18 +1,14 @@
 form {
     width: 400px;
-    border: 3px solid #0c0c0d66;
+    border: 4px solid #0c0c0d66;
     display: block;
     padding: 10px;
     border-radius: 3px;
-    margin-bottom: 50px;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: rgb(212, 250, 237);
+    margin-bottom: 30px;
 }
 
 .group {
     margin-bottom: 20px;
-
 }
 
 .label {
@@ -34,13 +30,16 @@ form {
     height: 40px;
     background-color: white;
     box-sizing: border-box;
+
+
 }
 
 .field:hover {
     border-color: #32532b;
 }
 
-.addContact {
+
+.addLogin {
     font-weight: 500;
     font-size: 16px;
     background-color: #4f9240;
@@ -57,12 +56,6 @@ form {
     box-shadow: 0px 4px 4px 0px #00000026;
 }
 
-.addContact:hover {
+.addLogin:hover {
     background-color: #2c5524;
-}
-
-.title {
-    text-align: center;
-    margin-bottom: 10px;
-    font-size: 18px;
 }

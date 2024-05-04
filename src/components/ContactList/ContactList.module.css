@@ -9,3 +9,12 @@
     margin-right: 10px;
     margin-bottom: 10px;
 }
+
+.titleList {
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-align: center;
+    text-decoration: underline;
+    text-transform: uppercase;
+}

@@ -39,31 +39,46 @@ const ContactForm = () => {
   };
 
   return (
-    <Formik
-      initialValues={initialValues}
-      validationSchema={validationSchema}
-      onSubmit={onSubmit}
-    >
-      <Form>
-        <div className={css.group}>
-          <label htmlFor="name" className={css.label}>
-            Name
-          </label>
-          <Field className={css.field} type="text" id="name" name="name" />
-          <ErrorMessage name="name" component="div" />
-        </div>
-        <div className={css.group}>
-          <label htmlFor="number" className={css.label}>
-            Number
-          </label>
-          <Field className={css.field} type="text" id="number" name="number" />
-          <ErrorMessage name="number" component="div" />
-        </div>
-        <button className={css.addContact} type="submit">
-          Add contact
-        </button>
-      </Form>
-    </Formik>
+    <div>
+      <h2 className={css.title}>Field for adding new contacts</h2>
+      <Formik
+        initialValues={initialValues}
+        validationSchema={validationSchema}
+        onSubmit={onSubmit}
+      >
+        <Form>
+          <div className={css.group}>
+            <label htmlFor="name" className={css.label}>
+              Name
+            </label>
+            <Field
+              className={css.field}
+              type="text"
+              id="name"
+              name="name"
+              placeholder="John Smith"
+            />
+            <ErrorMessage name="name" component="div" />
+          </div>
+          <div className={css.group}>
+            <label htmlFor="number" className={css.label}>
+              Number
+            </label>
+            <Field
+              className={css.field}
+              type="text"
+              id="number"
+              name="number"
+              placeholder="111-111-1111"
+            />
+            <ErrorMessage name="number" component="div" />
+          </div>
+          <button className={css.addContact} type="submit">
+            Add contact
+          </button>
+        </Form>
+      </Formik>
+    </div>
   );
 };
 

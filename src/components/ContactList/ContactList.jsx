@@ -8,7 +8,7 @@ import { useEffect } from "react";
 import { apiGetContacts } from "../../redux/contacts/operations";
 import { selectVisibleContacts } from "../../redux/filters/selectors";
 
-const ContactList = () => {
+const ContactList = ({ openModalDelete }) => {
   const dispatch = useDispatch();
   const isloading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
@@ -20,12 +20,18 @@ const ContactList = () => {
 
   return (
     <div>
+      <h2 className={css.titleList}>Your contacts list</h2>
       <ul className={css.contactList}>
         {isloading && <Loader />}
         {error && <ErrorMessage />}
         {visibleContacts.map((contact) => (
           <li className={css.contactListItem} key={contact.id}>
-            <Contact data={contact} />
+            <Contact
+              name={contact.name}
+              number={contact.number}
+              id={contact.id}
+              openModalDelete={openModalDelete}
+            />
           </li>
         ))}
       </ul>

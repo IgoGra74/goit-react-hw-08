@@ -2,16 +2,20 @@ import css from "./Contact.module.css";
 import { BsPersonFill } from "react-icons/bs";
 import { BsFillTelephoneFill } from "react-icons/bs";
 import { useDispatch } from "react-redux";
-import { apiDeleteContact } from "../../redux/contacts/operations";
+import { setCurrentContact } from "../../redux/contacts/slice";
 
-const Contact = ({ data }) => {
-  const { name, number, id } = data;
+const Contact = ({ name, number, id, openModalDelete }) => {
+  const currentContact = { name, number, id };
+
   const dispatch = useDispatch();
-  const onDeleteContact = (contactId) => {
-    dispatch(apiDeleteContact(contactId));
+
+  const contactBtnDelete = () => {
+    dispatch(setCurrentContact(currentContact));
+
+    openModalDelete();
   };
   const onDelete = () => {
-    onDeleteContact(id);
+    contactBtnDelete(id);
   };
 
   return (
@@ -27,7 +31,7 @@ const Contact = ({ data }) => {
           {number}
         </p>
       </div>
-      <button className={css.delete} onClick={() => onDelete(id)}>
+      <button className={css.delete} type="button" onClick={onDelete}>
         Delete
       </button>
     </div>
