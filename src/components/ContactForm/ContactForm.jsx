@@ -3,6 +3,7 @@ import * as Yup from "yup";
 import css from "./ContactForm.module.css";
 import { useDispatch } from "react-redux";
 import { apiAddContact } from "../../redux/contacts/operations";
+import toast from "react-hot-toast";
 
 const ContactForm = () => {
   const dispatch = useDispatch();
@@ -35,6 +36,7 @@ const ContactForm = () => {
       number: values.number,
     };
     onAddContact(newContact);
+    toast.success("New contact added");
     actions.resetForm();
   };
 

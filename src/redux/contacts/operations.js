@@ -1,5 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { instance } from "../auth/operations";
+import toast from "react-hot-toast";
 
 export const apiGetContacts = createAsyncThunk(
   "contacts",
@@ -8,6 +9,7 @@ export const apiGetContacts = createAsyncThunk(
       const { data } = await instance.get("/contacts");
       return data;
     } catch (error) {
+      toast.error("Oops, something went wrong, please reload the page!😢");
       return thunkApi.rejectWithValue(error.message);
     }
   }
@@ -20,6 +22,7 @@ export const apiAddContact = createAsyncThunk(
       const { data } = await instance.post("/contacts", newContact);
       return data;
     } catch (error) {
+      toast.error("Oops, something went wrong, please reload the page!😢");
       return thunkApi.rejectWithValue(error.message);
     }
   }
@@ -32,6 +35,7 @@ export const apiDeleteContact = createAsyncThunk(
       const { data } = await instance.delete(`/contacts/${contactId}`);
       return data;
     } catch (error) {
+      toast.error("Oops, something went wrong, please reload the page!😢");
       return thunkApi.rejectWithValue(error.message);
     }
   }
